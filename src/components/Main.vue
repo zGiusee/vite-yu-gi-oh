@@ -23,4 +23,9 @@ export default {
 <style lang="scss" scoped>
 @use '../styles/generals.scss' as *;
 @use '../styles/partials/variables' as *;
+
+main {
+    background-color: $yu_orange;
+    padding: 75px 0px;
+}
 </style>

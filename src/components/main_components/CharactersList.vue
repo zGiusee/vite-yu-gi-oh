@@ -19,7 +19,7 @@ export default {
 </script>
 
 <template>
-    <div class="row">
+    <div class="list-container">
         <CharactersCard v-for="Cards, index in store.CharacterData" :key="index" :Cards="Cards">
         </CharactersCard>
     </div>
@@ -27,4 +27,12 @@ export default {
 
 <style lang="scss" scoped>
 @use '../../styles/generals.scss' as *;
+
+.list-container {
+    background-color: white;
+    padding: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
 </style>
