@@ -21,7 +21,15 @@ export default {
 
 <template>
   <Header></Header>
-  <Main></Main>
+  <Main class="bg-my"></Main>
 </template>
 
-<style lang='scss' scoped></style>
+<style lang='scss' scoped>
+@use './styles/generals.scss' as *;
+@use './styles/partials/variables' as *;
+
+.bg-my {
+  background-color: $yu_orange;
+  height: 100vh;
+}
+</style>

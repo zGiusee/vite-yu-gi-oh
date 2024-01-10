@@ -9,10 +9,13 @@ export default {
 }
 </script>
 <template lang="">
-    <div>
-        
-    </div>
+    <main>
+        <div class="">
+            
+        </div>
+    </main>
 </template>
 <style lang="scss" scoped>
 @use '../styles/generals.scss' as *;
+@use '../styles/partials/variables' as *;
 </style>
