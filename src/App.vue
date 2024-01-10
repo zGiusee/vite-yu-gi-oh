@@ -1,6 +1,10 @@
 <script>
-import Header from './components/Header.vue'
-import Main from './components/Main.vue'
+import axios from 'axios';
+
+import Header from './components/Header.vue';
+import Main from './components/Main.vue';
+
+import { store } from './store.js';
 
 export default {
   components: {
@@ -13,7 +17,16 @@ export default {
     }
   },
   methods: {
-
+    // DEFINISCO LA FUNZIONE CHE RECUPERI I DATI DALLA API
+    getCharactersData() {
+      axios.get(store.endpoint).then((response) => {
+        store.CharacterData = response.data.data
+      })
+    }
+  },
+  created() {
+    // RICHIAMO LA FUNZIONE CHE RECUPERI I DATI ALL'AVVIO DELLA PAGINA
+    this.getCharactersData();
   },
 }
 
