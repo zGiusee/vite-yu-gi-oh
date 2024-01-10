@@ -19,7 +19,7 @@ export default {
     <!-- CARD -->
     <div class="my-cards-col">
         <div class="card-container">
-            <img v-for="CardImg, Index in Cards.card_images" :key="index" :src="CardImg.image_url_small" alt="">
+            <img v-for="CardImg in Cards.card_images" :src="CardImg.image_url_small" alt="">
             <h4>{{ Cards.name }}</h4>
             <h5>{{ Cards.archetype }}</h5>
         </div>
