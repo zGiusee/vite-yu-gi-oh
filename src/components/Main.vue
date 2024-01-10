@@ -1,6 +1,10 @@
 <script>
+import CharactersList from './main_components/CharactersList.vue';
 export default {
     name: 'Main',
+    components: {
+        CharactersList,
+    },
     data() {
         return {
 
@@ -10,8 +14,9 @@ export default {
 </script>
 <template lang="">
     <main>
-        <div class="">
-            
+        <div class="container ">
+            <!-- CONTENITORE DELLA LISTA -->
+            <CharactersList></CharactersList>
         </div>
     </main>
 </template>

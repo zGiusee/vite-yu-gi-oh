@@ -1,6 +1,10 @@
 <script>
+import CharactersCard from './CharactersCard.vue';
 export default {
     name: 'CharactersList',
+    components: {
+        CharactersCard,
+    },
     data() {
         return {
 
@@ -9,7 +13,11 @@ export default {
 }
 </script>
 
-<template></template>
+<template>
+    <div class="row">
+        <CharactersCard></CharactersCard>
+    </div>
+</template>
 
 <style lang="scss" scoped>
 @use '../styles/generals.scss' as *;
