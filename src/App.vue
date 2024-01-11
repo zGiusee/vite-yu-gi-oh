@@ -35,7 +35,6 @@ export default {
 
       }
       axios.get(api).then((response) => {
-        store.cardLoader = true;
         store.CharacterData = response.data.data;
         store.loading = false;
         store.cardLoader = false;
@@ -60,14 +59,16 @@ export default {
 </script>
 
 <template>
+  <!-- LOADER DELLA PAGINA -->
   <Loader v-if="store.loading"></Loader>
   <div v-else>
     <Header></Header>
     <main>
       <div class="container ">
         <SearchBox @sendSearch="getCharactersData"></SearchBox>
-        <!-- CONTENITORE DELLA LISTA -->
+        <!-- LOADER DELLE CARTE -->
         <cardLoader v-if="store.cardLoader"></cardLoader>
+        <!-- CONTENITORE DELLA LISTA -->
         <CharactersList v-else></CharactersList>
       </div>
     </main>

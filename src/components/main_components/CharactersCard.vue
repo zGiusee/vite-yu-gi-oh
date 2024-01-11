@@ -17,7 +17,7 @@ export default {
 
 <template>
     <!-- CARD -->
-    <div class="my-cards-col">
+    <div class="col-2 m-3  my-cards-col ">
         <div class="card-container">
             <!-- <img v-for="CardImg in Cards.card_images" :src="CardImg.image_url_small" alt=""> -->
             <!-- OPPURE VERSIONE MIGLIORATA RIGA 24 -->
@@ -33,9 +33,8 @@ export default {
 @use '../../styles/partials/variables' as*;
 
 .my-cards-col {
-    width: calc(100% / 5 - 30px);
+    // width: calc(100% / 5 - 30px);
     background-color: $yu_orange;
-    margin: 0px 0px 30px 0px;
 }
 
 .card-container {
