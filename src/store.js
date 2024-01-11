@@ -6,5 +6,7 @@ export const store = reactive({
     // ARRAY CHE VERRà RIEMPITO DALL'API 'YU-GI-HO'
     CharacterData: [],
     // VARIABILE DEL LOADER 
-    loading: true
+    loading: true,
+    // VARIABILE STATUS PER FILTRAGGIO DATI
+    archetype: ' ',
 })
