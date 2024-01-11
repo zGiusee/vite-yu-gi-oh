@@ -3,15 +3,15 @@ import axios from 'axios';
 
 import Loader from './components/Loader.vue';
 import Header from './components/Header.vue';
-import Main from './components/Main.vue';
+import CharactersList from './components/main_components/characterslist.vue';
 
 import { store } from './store.js';
 
 export default {
   components: {
     Header,
-    Main,
-    Loader
+    Loader,
+    CharactersList
   },
   data() {
     return {
@@ -43,11 +43,21 @@ export default {
   <Loader v-if="store.loading"></Loader>
   <div v-else>
     <Header></Header>
-    <Main></Main>
+    <main>
+      <div class="container ">
+        <!-- CONTENITORE DELLA LISTA -->
+        <CharactersList></CharactersList>
+      </div>
+    </main>
   </div>
 </template>
 
-<style lang='scss'>
+<style lang='scss' scoped>
 @use './styles/generals.scss' as *;
 @use './styles/partials/variables' as *;
+
+main {
+  background-color: $yu_orange;
+  padding: 75px 0px;
+}
 </style>
