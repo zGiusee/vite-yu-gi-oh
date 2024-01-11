@@ -19,11 +19,14 @@ export default {
     <!-- CARD -->
     <div class="col-2 m-3  my-cards-col ">
         <div class="card-container">
+
             <!-- <img v-for="CardImg in Cards.card_images" :src="CardImg.image_url_small" alt=""> -->
-            <!-- OPPURE VERSIONE MIGLIORATA RIGA 24 -->
+
+            <!-- OPPURE VERSIONE MIGLIORATA RIGA 26 -->
             <img :src="Cards.card_images[0].image_url_small" alt="">
             <h4>{{ Cards.name }}</h4>
             <h5>{{ Cards.archetype }}</h5>
+
         </div>
     </div>
 </template>

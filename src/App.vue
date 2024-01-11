@@ -6,6 +6,7 @@ import Header from './components/Header.vue';
 import SearchBox from './components/main_components/SearchBox.vue';
 import CharactersList from './components/main_components/characterslist.vue';
 import cardLoader from './components/main_components/cardLoader.vue'
+import cardCounter from './components/main_components/cardCounter.vue'
 
 import { store } from './store.js';
 
@@ -15,7 +16,8 @@ export default {
     Loader,
     CharactersList,
     SearchBox,
-    cardLoader
+    cardLoader,
+    cardCounter
   },
   data() {
     return {
@@ -34,15 +36,25 @@ export default {
         // NUMERO TOTALE
         // api += `?archetype=${store.archetype}`;
 
-        // NUMERO RISTRETTO
-        api = `https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=${store.archetype}&num=20&offset=0`
+        // NUMERO RISTRETTO DI CARTE VISIBILI
+        api = `https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=${store.archetype}&num=100&offset=0`
 
       };
 
+      store.cardLoader = true;
+
       axios.get(api).then((response) => {
-        store.CharacterData = response.data.data;
-        store.loading = false;
-        store.cardLoader = false;
+
+        // Inserisco un timeout per far si che il loader sia visibile a schermo (scelta discutibile)
+        setTimeout(() => {
+
+          store.CharacterData = response.data.data;
+
+          store.loading = false;
+
+          store.cardLoader = false;
+
+        }, 1000)
 
       });
 
@@ -68,13 +80,20 @@ export default {
   <div v-else>
     <Header></Header>
     <main>
+
       <div class="container ">
-        <SearchBox @sendSearch="getCharactersData"></SearchBox>
+        <SearchBox @resetFilter="getCharactersData" @sendSearch="getCharactersData"></SearchBox>
+        <cardCounter></cardCounter>
+
         <!-- LOADER DELLE CARTE -->
         <cardLoader v-if="store.cardLoader"></cardLoader>
         <!-- CONTENITORE DELLA LISTA -->
-        <CharactersList v-else></CharactersList>
+        <div v-else>
+          <CharactersList></CharactersList>
+        </div>
+
       </div>
+
     </main>
   </div>
 </template>

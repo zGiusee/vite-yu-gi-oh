@@ -19,7 +19,10 @@ export default {
 </script>
 
 <template>
+    <!-- CARD LIST CONTAINER -->
     <div class="list-container">
+
+        <!-- CHARACTER CARD -->
         <CharactersCard v-for="Cards, index in store.CharacterData" :key="index" :Cards="Cards">
         </CharactersCard>
     </div>
