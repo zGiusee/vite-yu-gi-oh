@@ -5,14 +5,6 @@ export default {
     data() {
         return {
             store,
-            archetypeArray: [
-                'Alien',
-                'Infernoble Arms',
-                'Noble Knight',
-                'Melodious',
-                'Archfiend',
-            ],
-
         }
     },
 
@@ -23,8 +15,9 @@ export default {
         <div class="col-3">
             <label for="filter" class="control-label">Archetype</label>
             <select class="form-select" id="filter" v-model="store.archetype">
-                <option value="">Select Archetype</option>
-                <option v-for="archetype, index in archetypeArray" :key="index" :value="archetype">{{ archetype }}
+                <option value=" ">Select Archetype</option>
+                <option v-for="archetype, index in store.archetypes" :key="index" :value="archetype.archetype_name">{{
+                    archetype.archetype_name }}
                 </option>
             </select>
         </div>

@@ -5,6 +5,7 @@ import Loader from './components/Loader.vue';
 import Header from './components/Header.vue';
 import SearchBox from './components/main_components/SearchBox.vue';
 import CharactersList from './components/main_components/characterslist.vue';
+import cardLoader from './components/main_components/cardLoader.vue'
 
 import { store } from './store.js';
 
@@ -13,7 +14,8 @@ export default {
     Header,
     Loader,
     CharactersList,
-    SearchBox
+    SearchBox,
+    cardLoader
   },
   data() {
     return {
@@ -27,15 +29,17 @@ export default {
       // DEFINISCO LA VARIABILE DELL'ENDPOINT (API URL)
       let api = store.endpoint;
 
-      if (store.archetype !== '') {
+      if (store.archetype !== " ") {
 
-        api = `https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=${store.archetype}&num=20&offset=0`
+        api += `?archetype=${store.archetype}`;
 
       }
-
       axios.get(api).then((response) => {
+        store.cardLoader = true;
         store.CharacterData = response.data.data;
         store.loading = false;
+        store.cardLoader = false;
+
       })
 
 
@@ -44,6 +48,11 @@ export default {
   created() {
     // RICHIAMO LA FUNZIONE CHE RECUPERI I DATI ALL'AVVIO DELLA PAGINA
     this.getCharactersData();
+
+    axios.get(store.archetypeApi).then((response) => {
+      store.archetypes = response.data;
+      console.log(store.archetypes)
+    })
 
   },
 }
@@ -58,7 +67,8 @@ export default {
       <div class="container ">
         <SearchBox @sendSearch="getCharactersData"></SearchBox>
         <!-- CONTENITORE DELLA LISTA -->
-        <CharactersList></CharactersList>
+        <cardLoader v-if="store.cardLoader"></cardLoader>
+        <CharactersList v-else></CharactersList>
       </div>
     </main>
   </div>
@@ -70,6 +80,7 @@ export default {
 
 main {
   background-color: $yu_orange;
+  height: 100%;
   padding: 75px 0px;
 }
 </style>
