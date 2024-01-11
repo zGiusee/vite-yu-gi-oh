@@ -31,15 +31,20 @@ export default {
 
       if (store.archetype !== " ") {
 
-        api += `?archetype=${store.archetype}`;
+        // NUMERO TOTALE
+        // api += `?archetype=${store.archetype}`;
 
-      }
+        // NUMERO RISTRETTO
+        api = `https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=${store.archetype}&num=20&offset=0`
+
+      };
+
       axios.get(api).then((response) => {
         store.CharacterData = response.data.data;
         store.loading = false;
         store.cardLoader = false;
 
-      })
+      });
 
 
     }
@@ -50,7 +55,6 @@ export default {
 
     axios.get(store.archetypeApi).then((response) => {
       store.archetypes = response.data;
-      console.log(store.archetypes)
     })
 
   },
