@@ -37,9 +37,11 @@ export default {
         // api += `?archetype=${store.archetype}`;
 
         // NUMERO RISTRETTO DI CARTE VISIBILI
-        api = `https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=${store.archetype}&num=100&offset=0`
+        api += `archetype=${store.archetype}${store.apiNumberFilter}`
 
-      };
+      } else {
+        api += store.apiNumberFilter;
+      }
 
       store.cardLoader = true;
 
